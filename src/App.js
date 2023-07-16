@@ -1,36 +1,39 @@
 import Cart from './Cart';
 import React from 'react';
 import Navbar from './Navbar';
+import firebase from "firebase/compat/app";
 class App extends React.Component {
 
   constructor() {
     super();
     this.state = {
-        products: [
-            {
-            price: 99,
-            title: 'watch ',
-            qty: 1,
-            img: 'https://freepngimg.com/thumb/watch/22489-9-branded-watch-photos-thumb.png',
-            id:1
-            },
-            {
-            price: 999,
-            title: 'Mobile Phone',
-            qty: 10,
-            img: 'https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=626&ext=jpg',
-            id:2
-            },
-            {
-            price: 999,
-            title: 'camera',
-            qty: 4,
-            img: 'https://img.freepik.com/premium-photo/camera-with-lens-that-says-word-nikon-it_873925-14650.jpg?size=626&ext=jpg&ga=GA1.1.1223866099.1688312878&semt=ais',
-            id:3
-            }
-        ]
-    }
+        products: []
+    }   
 }
+
+componentDidMount(){
+    firebase
+    .firestore()
+    .collection('products')
+    .get()
+    .then((snapshot) => {
+       snapshot.docs.map((doc) => {
+              console.log(doc.data())
+         });
+        const products = snapshot.docs.map((doc) => {
+            const data = doc.data();
+            data['id'] = doc.id;
+            return data;
+        });
+        this.setState({
+            products
+        })
+
+    }
+    )
+    
+}
+
 handleIncreaseQuantity = (product) => {
     console.log('Hey please inc the qty of', product);
     const {products} = this.state;
