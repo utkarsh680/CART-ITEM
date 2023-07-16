@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.cart-item{
+  display: flex; 
+  margin-top: 15px;
+}
+.left-block{
+   padding: 0 30px;
+}
+.right-block{
+  padding: 20px 20px 0px 30px;
+  font-size: 25px;
+  width: 300px;
+}
+.prize{
+  color: #7a7a7a;
+}
+.quantity{
+  color: #7a7a7a;
+}
+.cart-item-button{
+  margin-top: 20px;
+}
+.cart-item-button img{
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
